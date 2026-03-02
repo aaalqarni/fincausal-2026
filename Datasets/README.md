@@ -10,6 +10,9 @@ The dataset follows an **extractive QA format**. Each sample contains:
 - `question` – a causal question about the passage
 - `answer` – a verbatim span extracted directly from the context
 
+> **Official dataset source:** [FinCausal 2026 Dataset – e-cienciaDatos](https://edatos.consorciomadrono.es/dataset.xhtml?persistentId=doi:10.21950/H7RKHH)  
+> DOI: `10.21950/H7RKHH` — Moreno-Sandoval et al., 2026. Licensed under CC-BY-NC-SA-4.0.
+
 ---
 
 ## Dataset Structure
@@ -23,12 +26,35 @@ The dataset follows an **extractive QA format**. Each sample contains:
 
 ---
 
-## Languages
-
-- English
-- Spanish
+## Languages & File Structure
+```
+Datasets/
+├── EN/
+│   ├── train_en_2000.csv   # Official training set (predefined by organisers)
+│   ├── train_en_80.csv     # Internal train split (80% of official train)
+│   ├── dev_20_en.csv       # Internal dev split (20% of official train)
+│   └── test_en_500.csv     # Official test set
+└── ES/
+    ├── train_es_2000.csv
+    ├── train_es_80.csv
+    ├── dev_20_es.csv
+    └── test_es_503.csv
+```
 
 Both datasets are processed using identical pipelines to ensure structural consistency across languages.
+
+---
+
+## Train–Development Split
+
+`train_en_2000.csv` / `train_es_2000.csv` are the **official training sets** predefined by the FinCausal 2026 organisers.
+
+For internal evaluation, each official training set is further split using a fixed random seed:
+
+| File | Split | Proportion |
+|------|-------|------------|
+| `train_en_80.csv` / `train_es_80.csv` | Training | 80% |
+| `dev_20_en.csv` / `dev_20_es.csv` | Development | 20% |
 
 ---
 
@@ -55,17 +81,6 @@ Questions are categorised using rule-based pattern matching for exploratory anal
 
 ---
 
-## Train–Development Split
-
-Each language dataset is split using a fixed random seed for reproducibility:
-
-| Split | Proportion |
-|-------|------------|
-| Training | 80% |
-| Development | 20% |
-
----
-
 ## Preprocessing
 
 The accompanying notebook includes:
@@ -76,3 +91,9 @@ The accompanying notebook includes:
 - Sentence segmentation (spaCy)
 - Causal signal estimation
 - Question intent analysis
+
+---
+
+## Citation
+
+Moreno-Sandoval, A., Torterolo Orta, Y. A., Stanescu, M. A., Chatzi, M. (2026). *The Financial Document Causality Detection Shared Task (FinCausal 2026): Dataset*. e-cienciaDatos. https://doi.org/10.21950/H7RKHH
