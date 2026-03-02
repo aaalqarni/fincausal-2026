@@ -25,7 +25,11 @@ The dataset follows an **extractive QA format**. Each sample contains:
 | `answer` | Extracted answer span |
 
 ---
+## Notebooks
 
+| Notebook | Description |
+|----------|-------------|
+| `EDA_and_data_splitting.ipynb` | Exploratory data analysis, missing value checks, length statistics, question intent analysis, and 80/20 train–dev split for both EN and ES datasets. |
 ## Languages & File Structure
 ```
 Datasets/
