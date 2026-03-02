@@ -1,0 +1,11 @@
+openai
+pandas
+numpy
+tqdm
+datasets
+sentence-transformers
+llama-index-core
+llama-index-embeddings-openai
+llama-index-retrievers-bm25
+faiss-cpu
+PyStemmer
