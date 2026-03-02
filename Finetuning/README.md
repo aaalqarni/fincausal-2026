@@ -2,7 +2,7 @@
 
 This repository contains the pipeline for fine-tuning **GPT-4.1-mini** on the FinCausal 2026 shared task. The project focuses on extractive Question-Answering (QA) to identify financial causal relationships in both **English** and **Spanish**.
 
-## 📂 Project Structure
+## 📂 System Structure
 
 | File | Description |
 | :--- | :--- |
