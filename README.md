@@ -51,7 +51,7 @@ The pipeline consists of three stages:
 ├── utils/                           # Utility modules
 │   ├── __init__.py
 │   ├── template.py                  # CAUSE/EFFECT/OTHER classifier
-│   ├── evaluation.py                # EM, SAS, partial match metrics
+│   ├── evaluation.py                # EM, SAS
 │   ├── retrieval.py                 # Retrieval methods
 │   └── data_loader.py               # HuggingFace + CSV data loading
 ├── inference.py                     # Main inference script
