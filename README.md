@@ -32,33 +32,34 @@ The pipeline consists of three stages:
 | **Pattern-RAG** | Template-aware retrieval (CAUSE/EFFECT/OTHER) using FAISS |
 
 ## Project Structure
-'''
-├── Dataset/                        # Training and evaluation data
-├── Finetuning/                     # Fine-tuning scripts and configs
-├── Images/                         # Figures and diagrams
-├── eval/                           # Evaluation results
-├── indexes/                        # Pre-built retrieval indexes
-│   ├── build_indexes.py            # Build BM25 + Dense indexes
-│   └── indexing.sh                 # Index building shell script
-├── prompts/                        # Prompt templates
-│   ├── best_template.json          # Best performing template
-│   ├── causal_template.json        # Basic causal extraction
-│   ├── expert_template.json        # Domain-expert prompt
-│   ├── multingual_expert.json      # Multilingual expert prompt
-│   └── multingual_expert_cot.json  # Multilingual expert with CoT
-├── utils/                          # Utility modules
+
+.
+├── Dataset/                         # Training and evaluation data
+├── Finetuning/                      # Fine-tuning scripts and configs
+├── Images/                          # Figures and diagrams
+├── eval/                            # Evaluation outputs (scores, logs, predictions)
+├── indexes/                         # Pre-built retrieval indexes + build scripts
+│   ├── build_indexes.py             # Build BM25 + dense indexes
+│   └── indexing.sh                  # Index-building shell script
+├── prompts/                         # Prompt templates
+│   ├── best_template.json           # Best-performing template
+│   ├── causal_template.json         # Basic causal extraction
+│   ├── expert_template.json         # Domain-expert prompt
+│   ├── multilingual_expert.json     # Multilingual expert prompt
+│   └── multilingual_expert_cot.json # Multilingual expert + CoT
+├── utils/                           # Utility modules
 │   ├── __init__.py
-│   ├── template.py                 # CAUSE/EFFECT/OTHER classifier
-│   ├── evaluation.py               # EM, SAS, partial match metrics
-│   ├── retrieval.py                # All retrieval methods
-│   └── data_loader.py              # HuggingFace + CSV data loading
+│   ├── template.py                  # CAUSE/EFFECT/OTHER classifier
+│   ├── evaluation.py                # EM, SAS, partial match metrics
+│   ├── retrieval.py                 # Retrieval methods
+│   └── data_loader.py               # HuggingFace + CSV data loading
+├── inference.py                     # Main inference script
+├── run_inference_english.sh         # Example run script (English)
+├── requirements.txt                 # Dependencies
 ├── .gitignore
 ├── LICENSE
-├── README.md
-├── requirements.txt                # Dependencies
-├── inference.py                    # Main inference script
-└── run_inference_english.sh        # Example shell script
-'''
+└── README.md
+
 ## Installation
 
 ```bash
