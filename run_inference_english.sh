@@ -1,4 +1,4 @@
-API_KEY="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"
+API_KEY="sk-"
 TEMPLATE="./prompts/expert_template.json"
 PERSIST_DIR="./indexes/english"
 FOLDER="dense_eval_english_expert_template"
@@ -15,7 +15,7 @@ for SPLIT in validation; do
     mkdir -p "eval/${FOLDER}/${SPLIT}"
 
     python inference.py \
-      --hf_dataset "Alqarni/fincausal-2026-en" \
+      --hf_dataset ".../fincausal-2026-en" \
       --hf_split $SPLIT \
       --hf_train_split train \
       --api_key "$API_KEY" \
@@ -34,22 +34,6 @@ for SPLIT in validation; do
   done
 done
 
-# Summary
-echo "split,shots,exact_match,sas" > "${FOLDER}_summary.csv"
-for SPLIT in validation; do
-  for K in 5 10; do
-    EVAL_FILE="eval/${FOLDER}/${SPLIT}/eval_dense_${K}.csv"
-    if [ -f "$EVAL_FILE" ]; then
-      python -c "
-import pandas as pd
-df = pd.read_csv('$EVAL_FILE')
-em = df['exact_match'].mean()
-sas = df['sas_score'].mean() if 'sas_score' in df.columns else 0
-print(f'$SPLIT,$K,{em:.4f},{sas:.4f}')
-" >> "${FOLDER}_summary.csv"
-    fi
-  done
-done
 
 echo "========================================="
 echo "DENSE ENGLISH SUMMARY"
