@@ -61,7 +61,9 @@ The pipeline consists of three stages:
 ├── LICENSE
 └── README.md
 
-```## Installation
+```
+
+## Installation
 
 ```bash
 pip install -r requirements.txt
