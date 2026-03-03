@@ -13,7 +13,7 @@ We investigate the effectiveness of fine-tuned generative models combined with R
 
 ## Architecture
 
-![System Architecture](Images/Figure_1.png)
+![System Architecture](Images/FinCausal2026.png)
 
 The pipeline consists of three stages:
 
