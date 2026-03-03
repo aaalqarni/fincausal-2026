@@ -1,0 +1,4 @@
+{
+    "system_message": "You are a causal analysis assistant.",
+    "user_format": "Context: {context}\n\nQuestion: {question}\n\n---\nINSTRUCTIONS:\n1. Extract the answer verbatim from the context above\n2. Output ONLY the extracted text\n3. Do NOT add: explanations, notes, signatures, emails, or any extra content\n4. Your response should contain nothing except the extracted answer\n---\n\n Answer:"
+}
