@@ -33,6 +33,7 @@ The pipeline consists of three stages:
 
 ## Project Structure
 
+```text
 .
 ├── Dataset/                         # Training and evaluation data
 ├── Finetuning/                      # Fine-tuning scripts and configs
@@ -60,7 +61,7 @@ The pipeline consists of three stages:
 ├── LICENSE
 └── README.md
 
-## Installation
+```## Installation
 
 ```bash
 pip install -r requirements.txt
