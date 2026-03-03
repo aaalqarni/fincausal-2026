@@ -32,6 +32,7 @@ The pipeline consists of three stages:
 | **Pattern-RAG** | Template-aware retrieval (CAUSE/EFFECT/OTHER) using FAISS |
 
 ## Project Structure
+'''
 ├── Dataset/                        # Training and evaluation data
 ├── Finetuning/                     # Fine-tuning scripts and configs
 ├── Images/                         # Figures and diagrams
@@ -57,7 +58,7 @@ The pipeline consists of three stages:
 ├── requirements.txt                # Dependencies
 ├── inference.py                    # Main inference script
 └── run_inference_english.sh        # Example shell script
-
+'''
 ## Installation
 
 ```bash
