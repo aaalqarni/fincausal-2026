@@ -29,35 +29,32 @@ The pipeline consists of three stages:
 
 ## Project Structure
 
-```text
-├── Dataset/                   # Raw training and evaluation CSV data
-├── Finetuning/                # Notebooks and scripts for GPT-4.1-mini tuning
-├── Images/                    # Figures and architectural diagrams
-├── eval/                      # Output logs and evaluation results
-├── indexes/                   # Persisted BM25 (.pkl) and Dense Vector indexes
-├── prompts/                   # Prompt templates for different RAG strategies
-│   ├── best_template.json     # Top-performing prompt configuration
-│   ├── causal_template.json   # Basic causal extraction logic
-│   ├── expert_template.json   # Financial domain-expert persona
-│   ├── multilingual_expert.json # Fixed spelling
-│   └── multilingual_expert_cot.json # Fixed spelling
-├── utils/                     # Core logic modules
+.
+├── Dataset/                         # Training and evaluation data
+├── Finetuning/                      # Fine-tuning scripts and configs
+├── Images/                          # Figures and diagrams
+├── eval/                            # Evaluation outputs (scores, logs, predictions)
+├── indexes/                         # Pre-built retrieval indexes + build scripts
+│   ├── build_indexes.py             # Build BM25 + dense indexes
+│   └── indexing.sh                  # Index-building shell script
+├── prompts/                         # Prompt templates
+│   ├── best_template.json           # Best-performing template
+│   ├── causal_template.json         # Basic causal extraction
+│   ├── expert_template.json         # Domain-expert prompt
+│   ├── multilingual_expert.json     # Multilingual expert prompt
+│   └── multilingual_expert_cot.json # Multilingual expert + CoT
+├── utils/                           # Utility modules
 │   ├── __init__.py
-│   ├── template.py            # CAUSE/EFFECT/OTHER classification logic
-│   ├── evaluation.py          # Metrics: Exact Match (EM), SAS, Partial Match
-│   ├── retrieval.py           # Hybrid (BM25 + Vector) retrieval implementation
-│   └── data_loader.py         # Script for CSV and local data handling
-├── .gitignore                 # Prevents pushing indexes and keys to GitHub
-├── build_indexes.py           # Script to build BM25 + Dense indexes
-├── indexing.sh                # Automation script for index generation
-├── inference.py               # Main RAG inference and generation script
-├── run_inference_english.sh   # Execution script for English pipeline
-├── requirements.txt           # Project dependencies
-├── LICENSE                    # Project license
-└── README.md                  # Project documentation
-
-```
-
+│   ├── template.py                  # CAUSE/EFFECT/OTHER classifier
+│   ├── evaluation.py                # EM, SAS, partial match metrics
+│   ├── retrieval.py                 # Retrieval methods
+│   └── data_loader.py               # HuggingFace + CSV data loading
+├── inference.py                     # Main inference script
+├── run_inference_english.sh         # Example run script (English)
+├── requirements.txt                 # Dependencies
+├── .gitignore
+├── LICENSE
+└── README.md
 ---
 
 ## Installation
