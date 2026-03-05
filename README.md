@@ -1,6 +1,3 @@
-Here is the corrected and integrated `README.md` content in Markdown format. I have cleaned up the structure, fixed the spelling errors, and properly formatted the system overview.
-
-```markdown
 # FinCausal 2026: RAG Pipeline for Financial Causal QA
 
 This repository contains the code for a system submitted to the **FinCausal 2026** shared task on causal question answering from financial documents.
@@ -10,6 +7,7 @@ This repository contains the code for a system submitted to the **FinCausal 2026
 We investigate the effectiveness of fine-tuned generative models combined with **Retrieval-Augmented Generation (RAG)** for verbatim causal extraction from financial texts. Our system compares multiple retrieval strategies for few-shot example selection and evaluates their impact on both base and fine-tuned GPT models.
 
 ### Key Findings
+
 - **Fine-tuning is the dominant factor**, nearly doubling exact match scores across both languages.
 - **Retrieval strategy has minimal impact after fine-tuning**, with all methods yielding comparable results (EM variance < 2%).
 - **RAG benefits are more pronounced for Spanish**, where the base model has weaker zero-shot performance.
@@ -18,13 +16,10 @@ We investigate the effectiveness of fine-tuned generative models combined with *
 
 ## Architecture
 
-<<<<<<< HEAD
-
-=======
 ![System Architecture](Images/FinCausal2026.png)
->>>>>>> 44b4513c2bd9c50e19ecc7e0f41fe5fe609af2c4
 
 The pipeline consists of three stages:
+
 1. **Indexing** — Training examples are indexed using multiple retrieval methods.
 2. **Retrieval** — Top-k most relevant examples are retrieved for each test query.
 3. **Few-shot Prompt Engineering** — Retrieved examples are combined with the test query and passed to the LLM.
@@ -33,10 +28,7 @@ The pipeline consists of three stages:
 
 ## Project Structure
 
-<<<<<<< HEAD
-=======
 ```text
->>>>>>> 44b4513c2bd9c50e19ecc7e0f41fe5fe609af2c4
 .
 ├── Dataset/                         # Training and evaluation data
 ├── Finetuning/                      # Fine-tuning scripts and configs
@@ -54,11 +46,7 @@ The pipeline consists of three stages:
 ├── utils/                           # Utility modules
 │   ├── __init__.py
 │   ├── template.py                  # CAUSE/EFFECT/OTHER classifier
-<<<<<<< HEAD
 │   ├── evaluation.py                # EM, SAS, partial match metrics
-=======
-│   ├── evaluation.py                # EM, SAS
->>>>>>> 44b4513c2bd9c50e19ecc7e0f41fe5fe609af2c4
 │   ├── retrieval.py                 # Retrieval methods
 │   └── data_loader.py               # HuggingFace + CSV data loading
 ├── inference.py                     # Main inference script
@@ -67,18 +55,14 @@ The pipeline consists of three stages:
 ├── .gitignore
 ├── LICENSE
 └── README.md
-<<<<<<< HEAD
----
-=======
-
 ```
->>>>>>> 44b4513c2bd9c50e19ecc7e0f41fe5fe609af2c4
+
+---
 
 ## Installation
 
 ```bash
 pip install -r requirements.txt
-
 ```
 
 ## Usage
@@ -103,10 +87,9 @@ python build_indexes.py \
   --persist_dir ./indexes/spanish \
   --language spanish \
   --embed_model text-embedding-3-large
-
 ```
 
-### 2. Run Inference (Example)
+### 2. Run Inference
 
 **Hybrid retrieval with fine-tuned model:**
 
@@ -120,15 +103,14 @@ python inference.py \
   --use_ft \
   --eval --sas \
   --output_file eval/results_hybrid_5.csv
-
 ```
 
 ---
 
 ## Evaluation Metrics
 
-* **EM** — Exact Match (case-insensitive string comparison)
-* **SAS** — Semantic Answer Similarity (cosine similarity of sentence embeddings)
-* **LLM** — Official blind test score by LLM-as-judge (1–5 scale)
-
-```
+| Metric | Description |
+|--------|-------------|
+| **EM** | Exact Match (case-insensitive string comparison) |
+| **SAS** | Semantic Answer Similarity (cosine similarity of sentence embeddings) |
+| **LLM** | Official blind test score by LLM-as-judge (1–5 scale) |
