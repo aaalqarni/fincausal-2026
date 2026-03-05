@@ -18,7 +18,11 @@ We investigate the effectiveness of fine-tuned generative models combined with *
 
 ## Architecture
 
+<<<<<<< HEAD
 
+=======
+![System Architecture](Images/FinCausal2026.png)
+>>>>>>> 44b4513c2bd9c50e19ecc7e0f41fe5fe609af2c4
 
 The pipeline consists of three stages:
 1. **Indexing** — Training examples are indexed using multiple retrieval methods.
@@ -29,6 +33,10 @@ The pipeline consists of three stages:
 
 ## Project Structure
 
+<<<<<<< HEAD
+=======
+```text
+>>>>>>> 44b4513c2bd9c50e19ecc7e0f41fe5fe609af2c4
 .
 ├── Dataset/                         # Training and evaluation data
 ├── Finetuning/                      # Fine-tuning scripts and configs
@@ -46,7 +54,11 @@ The pipeline consists of three stages:
 ├── utils/                           # Utility modules
 │   ├── __init__.py
 │   ├── template.py                  # CAUSE/EFFECT/OTHER classifier
+<<<<<<< HEAD
 │   ├── evaluation.py                # EM, SAS, partial match metrics
+=======
+│   ├── evaluation.py                # EM, SAS
+>>>>>>> 44b4513c2bd9c50e19ecc7e0f41fe5fe609af2c4
 │   ├── retrieval.py                 # Retrieval methods
 │   └── data_loader.py               # HuggingFace + CSV data loading
 ├── inference.py                     # Main inference script
@@ -55,7 +67,12 @@ The pipeline consists of three stages:
 ├── .gitignore
 ├── LICENSE
 └── README.md
+<<<<<<< HEAD
 ---
+=======
+
+```
+>>>>>>> 44b4513c2bd9c50e19ecc7e0f41fe5fe609af2c4
 
 ## Installation
 
