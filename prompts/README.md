@@ -74,22 +74,6 @@ The `user_format` field uses two placeholders:
 | `{context}` | The financial passage |
 | `{question}` | The causal question to answer |
 
----
-
-## Usage
-
-```python
-import json
-
-with open("best_template.json") as f:
-    template = json.load(f)
-
-system = template["system_message"]
-user = template["user_format"].format(
-    context="Revenue declined by $2M (due to lower sales volume).",
-    question="Why did revenue decline?"
-)
-```
 
 ---
 
