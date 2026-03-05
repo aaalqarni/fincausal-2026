@@ -2,53 +2,51 @@
 
 Prompt templates used in our system for the FinCausal 2026 shared task. All templates target **verbatim span extraction** of causal relationships from financial text.
 
-Three prompting strategies were explored: (1) a **simple prompt**, which provides minimal instructions to extract the answer from the context; (2) an **expert prompt**, which assigns the model a domain-expert role and includes detailed extraction rules; and (3) a **multilingual prompt**, which extends the expert prompt with language-aware instructions to handle both English and Spanish inputs.
-
 ---
 
 ## Templates Overview
 
-| File | Strategy | Language | Notes |
-|------|----------|----------|-------|
-| `causal_template.json` | Simple prompt | English | Minimal system prompt; extraction rules in user turn |
-| `best_template.json` | Simple prompt | English | Best-performing variant; handles parenthetical causal spans |
-| `expert_template.json` | Expert prompt | English | Domain-expert role with detailed extraction rules |
-| `multingual_expert.json` | Multilingual prompt | English + Spanish | Expert prompt extended with language-aware instructions |
-| `multingual_expert_cot.json` | Multilingual prompt + CoT | English + Spanish | **Not used in this work** — reserved for future work |
+| File | Language | Chain-of-Thought | Notes |
+|------|----------|-----------------|-------|
+| `best_template.json` | English | No | Best-performing English template |
+| `causal_template.json` | English | No | Minimal system prompt, detailed user-side instructions |
+| `expert_template.json` | English | No | Clean, compact expert variant |
+| `multingual_expert.json` | English + Spanish | No | Bilingual; no reasoning step |
+| `multingual_expert_cot.json` | English + Spanish | Yes | Bilingual with explicit step-by-step reasoning |
 
 ---
 
 ## Template Details
 
-### `causal_template.json` — Simple Prompt
-Provides minimal context in the system message (`"You are a causal analysis assistant."`) and places all extraction instructions in the user turn. Represents the simplest prompting strategy with no role assignment or domain framing.
+### `best_template.json`
+The top-performing English-only template. The system prompt explicitly handles the edge case where causal information appears inside parentheses between numerical values — a common pattern in financial reporting.
+
+**Key rule:** Treat parenthetical text between values as explaining the full change, not just the first value.
 
 ---
 
-### `best_template.json` — Simple Prompt (Best Performing)
-Also a simple prompt, but with a richer system message that explicitly handles the edge case where causal information appears inside parentheses between numerical values — a common pattern in financial reporting.
-
-**Key rule:** Treat parenthetical text between two values as explaining the entire change, not just the first value.
+### `causal_template.json`
+Minimal system prompt (`"You are a causal analysis assistant."`) with all extraction rules pushed into the user turn. Useful for models that respond better to user-side instruction.
 
 ---
 
-### `expert_template.json` — Expert Prompt
-Assigns the model a domain-expert role (`"You are a causal analysis assistant... given a financial passage"`) and includes detailed, numbered extraction rules. No parenthetical edge-case handling.
+### `expert_template.json`
+Domain-specific system prompt (financial passages). Compact format with no edge-case handling. Good baseline for English financial text.
 
 ---
 
-### `multingual_expert.json` — Multilingual Prompt
-Extends the expert prompt with explicit language-aware instructions: `"The passage and question may be in Spanish."` The model is expected to extract verbatim in whichever language the input is written.
+### `multingual_expert.json`
+Extends `expert_template.json` to support Spanish. Identical extraction rules — the model is told the passage and question may be in Spanish and should extract verbatim in the source language.
 
 ---
 
-### `multingual_expert_cot.json` — Multilingual Prompt + CoT *(Not used in this work — reserved for future work)*
-Extends the multilingual prompt with a chain-of-thought reasoning step before the final answer. The model must:
+### `multingual_expert_cot.json` *(Not used in this work — reserved for future work)*
+Adds a **chain-of-thought reasoning step** before the final answer. The model must:
 1. Identify causal relationships in the passage
 2. Locate the exact span
 3. Verify it is verbatim
 
-Output format:
+Output format is structured:
 ```
 Reasoning: <step-by-step thinking>
 Answer: <verbatim extracted text>
@@ -476,7 +474,9 @@ encouraging greater diversity and more inclusive practices brings benefits to ou
 
 ---
 
-### `multingual_expert_cot.json` *(Not used in this work — reserved for future work)*
+### `multingual_expert_cot.json`
+
+#### Zero-shot
 ```
 SYSTEM:
 You are a causal analysis assistant. You will be given a financial passage and a question.
