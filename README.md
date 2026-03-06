@@ -126,8 +126,6 @@ python inference.py \
   - Add `--use_ft` and provide the `--ft_job_id`
 
  - **Model**
-  - `gpt-5.1`
-  - `gpt-5.2`
   - `gpt-4.1`
   - `gpt-4.1-mini`
   - For the complete list of available OpenAI models, see the official documentation:  
