@@ -90,23 +90,44 @@ python build_indexes.py \
 ```
 
 ### 2. Run Inference
+## Inference Example
 
-**Hybrid retrieval with fine-tuned model:**
+Run causal QA inference using the hybrid retrieval strategy.
 
 ```bash
 python inference.py \
+ --api_key "sk-..." \                # Required if using OpenAI models (e.g., GPT-4.1)
  --train_file "Dataset/EN/train_80_en.csv" \
-  --test_file "Dataset/EN/dev_20_en.csv" \
-  --template_file prompts/best_template.json \
-  --use_hybrid \
-  --persist_dir ./indexes/english \
-  --num_shots 5 \
-  --use_ft \
-  --eval --sas \
-  --output_file eval/results_hybrid_5.csv
+ --test_file "Dataset/EN/dev_20_en.csv" \
+ --template_file prompts/best_template.json \
+ --language english \                # Language used by the BM25 tokenizer (e.g., english, spanish)
+ --use_hybrid \                      # Hybrid retrieval (BM25 + Dense)
+ --persist_dir ./indexes/english \   # Directory containing the retrieval indexes
+ --num_shots 5 \                     # Number of few-shot examples
+ --ft_job_id "ftjob-....." \         # Fine-tuned model ID (optional)
+ --use_ft \                          # Enable if using a fine-tuned model
+ --model gpt-4.1-mini \              # Base model (e.g., GPT-4.1-mini)
+ --eval --sas \                      # Run evaluation with SAS scoring
+ --output_file eval/results_hybrid_5.csv
 ```
 
----
+### Notes
+
+- **Language option**
+  - `--language english` → for English datasets  
+  - `--language spanish` → for Spanish datasets  
+  This ensures the **BM25 parser uses the correct language tokenisation**.
+
+- **Using OpenAI models**
+  - Provide `--api_key`
+  - Choose the model with `--model`
+
+- **Using a fine-tuned model**
+  - Add `--use_ft` and provide the `--ft_job_id`
+
+- **Using your own local model**
+  - Remove `--api_key`
+  - Replace `--model` with your local model name/path---
 
 ## Evaluation Metrics
 
