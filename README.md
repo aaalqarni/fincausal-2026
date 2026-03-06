@@ -125,10 +125,13 @@ python inference.py \
 - **Using a fine-tuned model**
   - Add `--use_ft` and provide the `--ft_job_id`
 
-- **Using your own local model**
-  - Remove `--api_key`
-  - Replace `--model` with your local model name/path---
-
+ - **Model**
+  - `gpt-5.1`
+  - `gpt-5.2`
+  - `gpt-4.1`
+  - `gpt-4.1-mini`
+  - For the complete list of available OpenAI models, see the official documentation:  
+    https://developers.openai.com/api/docs/models
 ## Evaluation Metrics
 
 | Metric | Description |
