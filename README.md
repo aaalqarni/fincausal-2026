@@ -1,6 +1,6 @@
 # FinCausal 2026: RAG Pipeline for Financial Causal QA
 
-This repository contains the code for a system submitted to the **FinCausal 2026** shared task on causal question answering from financial documents.
+This repository contains the code for our system submitted to the **FinCausal 2026** shared task on causal question answering from financial documents.
 
 ## Overview
 
