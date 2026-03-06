@@ -95,7 +95,8 @@ python build_indexes.py \
 
 ```bash
 python inference.py \
-  --train_file "Dataset/EN/dev_20_en.csv" \
+ --train_file "Dataset/EN/train_80_en.csv" \
+  --test_file "Dataset/EN/dev_20_en.csv" \
   --template_file prompts/best_template.json \
   --use_hybrid \
   --persist_dir ./indexes/english \
