@@ -140,7 +140,7 @@ def build_faiss_indexes(train_data, embed_model, q_col="QUESTION", c_col="CONTEX
 
         indices[t] = ix
         id_maps[t] = np.array(row_ids, dtype=np.int64)
-        print(f"[✅] Built FAISS index for {t}: {ix.ntotal} vectors")
+        print(f"Built FAISS index for {t}: {ix.ntotal} vectors")
 
     return indices, id_maps, clusters
 
@@ -150,7 +150,7 @@ def save_faiss_indexes(indices, id_maps, persist_dir):
     for t in indices:
         faiss.write_index(indices[t], os.path.join(persist_dir, f"faiss_{t}.index"))
         np.save(os.path.join(persist_dir, f"idmap_{t}.npy"), id_maps[t])
-    print(f"[✅] FAISS indexes saved to {persist_dir}")
+    print(f" FAISS indexes saved to {persist_dir}")
 
 
 def load_faiss_indexes(persist_dir):
@@ -161,7 +161,7 @@ def load_faiss_indexes(persist_dir):
             t = f.replace("faiss_", "").replace(".index", "")
             indices[t] = faiss.read_index(os.path.join(persist_dir, f))
             id_maps[t] = np.load(os.path.join(persist_dir, f"idmap_{t}.npy"))
-            print(f"[✅] Loaded FAISS index for {t}: {indices[t].ntotal} vectors")
+            print(f" Loaded FAISS index for {t}: {indices[t].ntotal} vectors")
     return indices, id_maps
 
 
