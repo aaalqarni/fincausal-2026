@@ -9,7 +9,6 @@ We investigate the effectiveness of fine-tuned generative models combined with *
 ### Key Findings
 
 - **Fine-tuning is the dominant factor**, nearly doubling exact match scores across both languages.
-- **Retrieval strategy has minimal impact after fine-tuning**.
 - **RAG benefits are more pronounced for Spanish**, where the base model has weaker zero-shot performance.
 
 ---
