@@ -121,12 +121,12 @@ python inference.py \
 
 -   Retrieval Methods
 
-    |  Flag         |  Method | Description                                |
-    |---------------|---------|--------------------------------------------|
-    | \--random     | Random  | Randomly sampled few-shot examples         |
-    | \--use_bm25   | BM25    | Sparse lexical retrieval with PyStemmer    |
-    | \--use_dense  | Dense   | Semantic retrieval using OpenAI embeddings |
-    | \--use_hybrid | Hybrid  | BM25 + Dense combined via RRF              |
+    | Flag          | Method | Description                                |
+    |---------------|--------|--------------------------------------------|
+    | \--random     | Random | Randomly sampled few-shot examples         |
+    | \--use_bm25   | BM25   | Sparse lexical retrieval with PyStemmer    |
+    | \--use_dense  | Dense  | Semantic retrieval using OpenAI embeddings |
+    | \--use_hybrid | Hybrid | BM25 + Dense combined via RRF              |
 
 -   **Using OpenAI models**
 
@@ -139,15 +139,17 @@ python inference.py \
 
 -   **Model**
 
--   `gpt-4.1`
+    -   `gpt-4.1`
 
--   `gpt-4.1-mini`
+    -   `gpt-4.1-mini`
 
--   For the complete list of available OpenAI models, see the official documentation:\
-    <https://developers.openai.com/api/docs/models> \## Evaluation Metrics
+    -   For the complete list of available OpenAI models, see the official documentation:\
+        <https://developers.openai.com/api/docs/models>
+
+### 3. Evaluation Metrics
 
 | Metric  | Description                                                           |
-|----------------------------|--------------------------------------------|
+|---------|-----------------------------------------------------------------------|
 | **EM**  | Exact Match (case-insensitive string comparison)                      |
 | **SAS** | Semantic Answer Similarity (cosine similarity of sentence embeddings) |
 | **LLM** | Official blind test score by LLM-as-judge (1--5 scale)                |
