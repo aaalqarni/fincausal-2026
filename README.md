@@ -8,10 +8,10 @@ We investigate the effectiveness of fine-tuned generative models combined with *
 
 ### Key Findings
 
-- **Fine-tuning is the dominant factor**, nearly doubling exact match scores across both languages.
-- **RAG benefits are more pronounced for Spanish**, where the base model has weaker zero-shot performance.
+-   **Fine-tuning is the dominant factor**, nearly doubling exact match scores across both languages.
+-   **RAG benefits are more pronounced for Spanish**, where the base model has weaker zero-shot performance.
 
----
+------------------------------------------------------------------------
 
 ## Architecture
 
@@ -19,15 +19,15 @@ We investigate the effectiveness of fine-tuned generative models combined with *
 
 The pipeline consists of three stages:
 
-1. **Indexing** — Training examples are indexed using multiple retrieval methods.
-2. **Retrieval** — Top-k most relevant examples are retrieved for each test query.
-3. **Few-shot Prompt Engineering** — Retrieved examples are combined with the test query and passed to the LLM.
+1.  **Indexing** --- Training examples are indexed using multiple retrieval methods.
+2.  **Retrieval** --- Top-k most relevant examples are retrieved for each test query.
+3.  **Few-shot Prompt Engineering** --- Retrieved examples are combined with the test query and passed to the LLM.
 
----
+------------------------------------------------------------------------
 
 ## Project Structure
 
-```text
+``` text
 .
 ├── Dataset/                         # Training and evaluation data
 ├── Finetuning/                      # Fine-tuning scripts and configs
@@ -56,11 +56,11 @@ The pipeline consists of three stages:
 └── README.md
 ```
 
----
+------------------------------------------------------------------------
 
 ## Installation
 
-```bash
+``` bash
 pip install -r requirements.txt
 ```
 
@@ -70,7 +70,7 @@ pip install -r requirements.txt
 
 Ensure your `OPENAI_API_KEY` is exported in your environment.
 
-```bash
+``` bash
 export OPENAI_API_KEY="sk-..."
 
 # English
@@ -89,11 +89,12 @@ python build_indexes.py \
 ```
 
 ### 2. Run Inference
+
 ## Inference Example
 
 Run causal QA inference using the hybrid retrieval strategy.
 
-```bash
+``` bash
 python inference.py \
  --api_key "sk-..." \                # Required if using OpenAI models (e.g., GPT-4.1)
  --train_file "Dataset/EN/train_80_en.csv" \
@@ -112,27 +113,41 @@ python inference.py \
 
 ### Notes
 
-- **Language option**
-  - `--language english` → for English datasets  
-  - `--language spanish` → for Spanish datasets  
-  This ensures the **BM25 parser uses the correct language tokenisation**.
+-   **Language option**
 
-- **Using OpenAI models**
-  - Provide `--api_key`
-  - Choose the model with `--model`
+    -   `--language english` → for English datasets\
+    -   `--language spanish` → for Spanish datasets\
+        This ensures the **BM25 parser uses the correct language tokenisation**.
 
-- **Using a fine-tuned model**
-  - Add `--use_ft` and provide the `--ft_job_id`
+-   Retrieval Methods
 
- - **Model**
-  - `gpt-4.1`
-  - `gpt-4.1-mini`
-  - For the complete list of available OpenAI models, see the official documentation:  
-    https://developers.openai.com/api/docs/models
-## Evaluation Metrics
+    |  Flag         |  Method | Description                                |
+    |---------------|---------|--------------------------------------------|
+    | \--random     | Random  | Randomly sampled few-shot examples         |
+    | \--use_bm25   | BM25    | Sparse lexical retrieval with PyStemmer    |
+    | \--use_dense  | Dense   | Semantic retrieval using OpenAI embeddings |
+    | \--use_hybrid | Hybrid  | BM25 + Dense combined via RRF              |
 
-| Metric | Description |
-|--------|-------------|
-| **EM** | Exact Match (case-insensitive string comparison) |
+-   **Using OpenAI models**
+
+    -   Provide `--api_key`
+    -   Choose the model with `--model`
+
+-   **Using a fine-tuned model**
+
+    -   Add `--use_ft` and provide the `--ft_job_id`
+
+-   **Model**
+
+-   `gpt-4.1`
+
+-   `gpt-4.1-mini`
+
+-   For the complete list of available OpenAI models, see the official documentation:\
+    <https://developers.openai.com/api/docs/models> \## Evaluation Metrics
+
+| Metric  | Description                                                           |
+|----------------------------|--------------------------------------------|
+| **EM**  | Exact Match (case-insensitive string comparison)                      |
 | **SAS** | Semantic Answer Similarity (cosine similarity of sentence embeddings) |
-| **LLM** | Official blind test score by LLM-as-judge (1–5 scale) |
+| **LLM** | Official blind test score by LLM-as-judge (1--5 scale)                |
