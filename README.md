@@ -51,9 +51,6 @@ The pipeline consists of three stages:
 ├── inference.py                     # Main inference script
 ├── run_inference_english.sh         # Example run script (English)
 ├── requirements.txt                 # Dependencies
-├── .gitignore
-├── LICENSE
-└── README.md
 ```
 
 ------------------------------------------------------------------------
