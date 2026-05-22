@@ -17,9 +17,6 @@ pip install pandas llama-index llama-index-embeddings-openai llama-index-retriev
 ```bash
 export OPENAI_API_KEY="sk-..."
 ```
-
-Never pass the key as a CLI argument — it will leak into shell history.
-
 ---
 
 ## Usage
