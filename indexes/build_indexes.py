@@ -52,13 +52,13 @@ def build_nodes(train_df, context_col="CONTEXT", question_col="QUESTION"):
 #    path = os.path.join(persist_dir, "bm25_nodes.pkl")
 #    with open(path, "wb") as f:
 #        pickle.dump(bm25_payload, f)
-#    print(f"[✅] BM25 payload saved to {path}")
+#    print(f"[-] BM25 payload saved to {path}")
 
 def save_bm25_payload(nodes, persist_dir, language="english"):
     path = os.path.join(persist_dir, "bm25_nodes.pkl")
     with open(path, "wb") as f:
         pickle.dump(nodes, f)
-    print(f"[✅] BM25 nodes saved to {path}")
+    print(f"[-] BM25 nodes saved to {path}")
 
 def build_and_save_dense_index(docs, persist_dir, embed_model_name):
     Settings.embed_model = OpenAIEmbedding(model_name=embed_model_name)
@@ -68,7 +68,7 @@ def build_and_save_dense_index(docs, persist_dir, embed_model_name):
     os.makedirs(dense_dir, exist_ok=True)
 
     index.storage_context.persist(persist_dir=dense_dir)
-    print(f"[✅] Dense index saved to {dense_dir}")
+    print(f"[-] Dense index saved to {dense_dir}")
 
 
 def main():
@@ -121,7 +121,7 @@ def main():
     save_bm25_payload(nodes, args.persist_dir, language=args.language)
     build_and_save_dense_index(docs, args.persist_dir, args.embed_model)
 
-    print("\n[✅] All indexes saved:")
+    print("\n[-] All indexes saved:")
     print(f"  - BM25 nodes:   {os.path.join(args.persist_dir, 'bm25_nodes.pkl')}")
     print(f"  - Dense index:  {os.path.join(args.persist_dir, 'dense_index')}")
 
